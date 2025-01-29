@@ -3,10 +3,10 @@ This is a test project for exploring project management features and best practi
 
 
 ## Quick Fixes
-**Error:** SQLSTATE[HY000]: General error: 1005 Can't create table `dev_test_project`.`projects` (errno: 150 "Foreign key constraint is incorrectly formed") (Connection: mysql, SQL: alter table `projects` add constraint `projects_team_id_foreign` foreign key (`team_id`) references `teams` (`id`) on delete cascade)
+**Error:** SQLSTATE[HY000]: General error: 1005 Can't create table `dev_test_project`.`projects` (errno: 150 "Foreign key constraint is incorrectly formed") (Connection: mysql, SQL: alter table `projects` add constraint `projects_team_id_foreign` foreign key (`team_id`) references `teams` (`id`) on delete cascade)  
 **Fix:** Re-ordered list of created migration files in correct order to fix foreign key constraint errors during migration.
-
-**Error:** When clicking the "Complete" button in tasks lists, console error "Title is required" appears.
+---
+**Error:** When clicking the "Complete" button in tasks lists, console error "Title is required" appears.  
 **Fix:** Made some adjustments to the PUT request method to fix the validation error.
 
 
