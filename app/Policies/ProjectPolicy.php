@@ -24,6 +24,7 @@ class ProjectPolicy
 
     public function delete(User $user, Project $project): bool
     {
-        return $user->belongsToTeam($project->team);
+        return $user->belongsToTeam($project->team) && 
+            $user->hasTeamPermission($project->team, 'delete');
     }
 }

@@ -54,4 +54,12 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(Project::class);
     }
+
+    /**
+     * Get team owner.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

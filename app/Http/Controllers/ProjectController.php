@@ -14,7 +14,11 @@ class ProjectController extends Controller
         $projects = Auth::user()->currentTeam->projects()
             ->withCount('tasks')
             ->latest()
-            ->get();
+            ->get()
+            ->map(function ($project) {
+                $project->isAuthorized = auth()->user()->can('delete', $project);
+                return $project;
+            });
 
         return Inertia::render('Projects/Index', [
             'projects' => $projects,
@@ -40,8 +44,11 @@ class ProjectController extends Controller
         $this->authorize('view', $project);
 
         $project->load(['tasks' => function ($query) {
-            $query->latest();
+            $query->latest()->with('user');
         }]);
+
+        $project->isAuthorized = auth()->user()->can('delete', $project);
+        $teamUsers = $project->team->users()->get();
 
         return Inertia::render('Projects/Show', [
             'project' => $project,
@@ -50,6 +57,7 @@ class ProjectController extends Controller
                 'total' => $project->tasks->count(),
                 'completed' => $project->tasks->where('status', 'completed')->count(),
             ],
+            'teamUsers' => $teamUsers,
         ]);
     }
 

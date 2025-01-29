@@ -13,7 +13,9 @@ class TaskController extends Controller
     {
         $this->authorize('view', $project);
 
-        $tasks = $project->tasks()->latest()->get();
+        $tasks = $project->tasks()
+            ->latest()
+            ->get();
 
         return Inertia::render('Projects/Show', [
             'project' => $project,
@@ -31,6 +33,7 @@ class TaskController extends Controller
             'status' => ['required', 'string', 'in:not_started,in_progress,completed'],
             'priority' => ['required', 'string', 'in:low,medium,high'],
             'completion_date' => ['nullable', 'date'],
+            'user_id' => ['nullable', 'exists:users,id'],
         ]);
 
         $project->tasks()->create($validated);
@@ -58,6 +61,7 @@ class TaskController extends Controller
             'status' => ['required', 'string', 'in:not_started,in_progress,completed'],
             'priority' => ['required', 'string', 'in:low,medium,high'],
             'completion_date' => ['nullable', 'date'],
+            'user_id' => ['nullable', 'exists:users,id'],
         ]);
 
         if ($validated['status'] === 'completed' && ! $task->completion_date) {
