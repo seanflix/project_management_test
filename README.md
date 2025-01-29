@@ -9,7 +9,7 @@ This is a test project for exploring project management features and best practi
     ```
 > **Fix:** Re-ordered list of created migration files in correct order to fix foreign key constraint errors during migration.  
 
-**Error:** When clicking the "Complete" button in tasks lists, console error ```Title is required``` appears.  
+**Error:** When clicking the "Complete" button in tasks lists, invisible modal error ```Title is required``` appears.  
 > **Fix:** Made some adjustments to the PUT request method to fix the validation error.
 
 
