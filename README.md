@@ -21,6 +21,11 @@ This is a test project for exploring project management features and best practi
 
 ## Detailed Summary of Changes
 - [x] Installed package `@vuepic/vue-datepicker` for date range filtering in sorting projects/tasks. Also, added these on `app.js` for registering the component as global.
+    **Installation:**
+    ```npm
+    npm install @vuepic/vue-datepicker
+    ```
+    **Import/Globalization:**
     ```javascript
     import VueDatePicker from '@vuepic/vue-datepicker';
     import '@vuepic/vue-datepicker/dist/main.css';
